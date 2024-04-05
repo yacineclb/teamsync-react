@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './pages/Home.tsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Dashboard.tsx';
 import './index.css';
+import Navbar from './components/Navbar.tsx';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
-]);
+async function deferRender() {
+  const {worker} = await import('./api/mocks/browser');
+  return worker.start();
+}
+
+deferRender().then(()=> {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}>
+          {/* <Route path="*" element={<NoMatch />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 );
+})
