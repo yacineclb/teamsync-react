@@ -7,6 +7,8 @@ export default function Button({
   disabled = false,
   size = defaultButtonSize,
   variant = defaultButtonVariant,
+  className,
+  ...rest
 }: ButtonProps) {
   const computeStyle = () => {
     if (disabled) {
@@ -26,7 +28,11 @@ export default function Button({
   };
 
   return (
-    <button className={`rounded ${computeStyle()} text-white font-semibold px-4 py-2`} onClick={onClick}>
+    <button
+      className={`rounded ${computeStyle()} text-white font-semibold px-4 py-2 ${className}`}
+      onClick={onClick}
+      {...rest}
+    >
       {children}
     </button>
   );
