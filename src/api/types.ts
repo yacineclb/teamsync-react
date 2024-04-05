@@ -12,7 +12,6 @@ export type User = {
   role: UserRole;
 };
 
-
 export enum IssueStatus {
   TODO,
   IN_PROGRESS,
@@ -21,11 +20,27 @@ export enum IssueStatus {
 }
 
 export type Issue = {
-  id: number,
-  title: string,
-  assignedUser: number,
-  author: number,
-  description: string,
-  status: IssueStatus,
-  projectId: number
+  id: number;
+  title: string;
+  assignedUser: number;
+  author: number;
+  description: string;
+  status: IssueStatus;
+  projectId: number;
+};
+
+export enum ProjectStatus {
+  TODO,
+  IN_PROGRESS,
+  DONE,
 }
+
+export type Project = {
+  id: number;
+  title: string;
+  assignedUser: number[];
+  author: number;
+  description: string;
+  status: ProjectStatus;
+  teamAccess: number[];
+};
