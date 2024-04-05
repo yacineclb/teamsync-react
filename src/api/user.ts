@@ -1,4 +1,4 @@
-import { users } from './data/users';
+import { users } from './mocks/data/users';
 import { User } from './types';
 
 export async function getUsers(): Promise<User[]> {
