@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { Issue } from '../api/types';
 import { addIssue } from '../api/issue';
 
-const useIssuesMutation = () => {
+const useIssueMutation = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>('');
 
-  async function createIssue(newIssues: Issue) {
+  async function createIssue(newIssue: Issue) {
     try {
       setLoading(true);
-      await addIssue(newIssues);
+      await addIssue(newIssue);
     } catch (error) {
       setError((error as Error).message);
     } finally {
@@ -24,4 +24,4 @@ const useIssuesMutation = () => {
   };
 };
 
-export default useIssuesMutation;
+export default useIssueMutation;

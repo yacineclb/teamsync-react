@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Issue } from '../api/types';
 import { getIssue, getIssues } from '../api/issue';
 
-const useIssues = (issueId: number | null = null) => {
+const useIssueQuery = (issueId: number | null = null) => {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>('');
@@ -37,4 +37,4 @@ const useIssues = (issueId: number | null = null) => {
   };
 };
 
-export default useIssues;
+export default useIssueQuery;
