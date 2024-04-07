@@ -21,7 +21,7 @@ export async function getProject(id: number): Promise<Project | null> {
 
   const response = await fetch('https://localhost:3000/api/projects/' + id);
   if (!response.ok) {
-    throw new Error('An error occurred while fetching the users');
+    throw new Error('An error occurred while fetching the project');
   }
 
   const projectsData = await response.json();
