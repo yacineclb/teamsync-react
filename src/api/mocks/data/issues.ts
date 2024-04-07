@@ -12,7 +12,7 @@ const btnIssue: Issue = {
 
 const testIssue: Issue = {
   id: 2,
-  title: 'Impletement test for button component',
+  title: 'Test the button component',
   assignedUser: 2,
   author: 1,
   description: 'Create a test for the button component',
@@ -20,4 +20,24 @@ const testIssue: Issue = {
   projectId: 1,
 };
 
-export const issues: Issue[] = [btnIssue, testIssue];
+const anotherIssue: Issue = {
+  id: 2,
+  title: 'Another issue very complex',
+  assignedUser: 2,
+  author: 1,
+  description: 'This is a very complex issue',
+  status: IssueStatus.TODO,
+  projectId: 1,
+};
+
+const lastIssue: Issue = {
+  id: 2,
+  title: 'Last issue of the project',
+  assignedUser: 2,
+  author: 1,
+  description: 'This is the last issue.',
+  status: IssueStatus.TODO,
+  projectId: 1,
+};
+
+export const issues: Issue[] = [btnIssue, testIssue, anotherIssue, lastIssue];
