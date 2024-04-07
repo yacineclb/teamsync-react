@@ -8,6 +8,7 @@ const useProjectMuation = () => {
 
   async function createProject(newProject: Project) {
     try {
+      setError(null);
       setLoading(true);
       await addProject(newProject);
     } catch (error) {

@@ -5,10 +5,11 @@ import { getProject, getProjects } from '../api/project';
 const useProjectQuery = (projectId: number | null = null) => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>('');
+  const [error, setError] = useState<string | null>(null);
 
   const fetchProjects = useCallback(async () => {
     try {
+      setError(null);
       setLoading(true);
 
       if (projectId) {
