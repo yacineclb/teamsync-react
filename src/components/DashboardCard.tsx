@@ -6,7 +6,13 @@ type DashboardCardProps = PropsWithChildren & {
 };
 
 export default function DashboardCard({ children, className }: DashboardCardProps) {
-  return <div className={cn('p-12 min-w-96 rounded-xl bg-white border border-black/20', className)}>{children}</div>;
+  return (
+    <div
+      className={cn('aspect-square px-12 pt-12 pb-2 min-w-96 rounded-xl bg-white border border-black/20', className)}
+    >
+      {children}
+    </div>
+  );
 }
 
 type TitleProps = PropsWithChildren;
