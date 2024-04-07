@@ -5,10 +5,11 @@ import { getIssue, getIssues } from '../api/issue';
 const useIssueQuery = (issueId: number | null = null) => {
   const [issues, setIssues] = useState<Issue[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>('');
+  const [error, setError] = useState<string | null>(null);
 
   const fetchIssues = useCallback(async () => {
     try {
+      setError(null);
       setLoading(true);
 
       if (issueId) {

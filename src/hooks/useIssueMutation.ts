@@ -4,10 +4,11 @@ import { addIssue } from '../api/issue';
 
 const useIssueMutation = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>('');
+  const [error, setError] = useState<string | null>(null);
 
   async function createIssue(newIssue: Issue) {
     try {
+      setError(null);
       setLoading(true);
       await addIssue(newIssue);
     } catch (error) {
