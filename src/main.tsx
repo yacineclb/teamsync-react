@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './pages/Dashboard.tsx';
-import Navbar from './components/Navbar.tsx';
-import Login from './pages/Login.tsx';
+import Dashboard from './pages/Dashboard';
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import Register from './pages/Register';
+
 import './index.css';
 
 async function deferRender() {
@@ -19,6 +21,7 @@ deferRender().then(() => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
           {/* <Route path="*" element={<NoMatch />} /> */}
         </Routes>
       </BrowserRouter>

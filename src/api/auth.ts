@@ -43,7 +43,9 @@ export async function signUp(newUser: User): Promise<SignUpInfo> {
   });
 
   if (!response.ok) {
-    throw new Error('An error occurred while creating the user');
+    if (response.status === 409) {
+      throw new Error('User already exists');
+    }
   }
 
   const result = response.json();
