@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useSign from '../hooks/useSign';
 import { User } from '../api/types';
 import Button from '../components/ui/Button/Button';
@@ -6,6 +6,7 @@ import { ZodType, z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Input from '../components/ui/Input/Input';
+import { useNavigate } from 'react-router-dom';
 
 type FormData = {
   email: string;
@@ -19,6 +20,7 @@ const LoginSchema: ZodType<FormData> = z.object({
 
 export default function Login() {
   const { login, token, loading, error: loginError } = useSign();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -28,6 +30,12 @@ export default function Login() {
     resolver: zodResolver(LoginSchema),
   });
 
+  useEffect(() => {
+    if (token !== null) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [navigate, token]);
+
   const onSubmit: SubmitHandler<FormData> = (data) => {
     login({
       email: data.email,
@@ -36,8 +44,8 @@ export default function Login() {
   };
 
   return (
-    <section className="mt-28 flex justify-center items-center">
-      <div className="border py-12 px-20 rounded-lg">
+    <section className="w-full h-fit mt-12 flex justify-center">
+      <div className="py-12 px-20 rounded-lg bg-white">
         <h3 className="text-3xl mb-12">Log in to your personal space</h3>
         {loginError || (loginError && <p>{loginError}</p>)}
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">

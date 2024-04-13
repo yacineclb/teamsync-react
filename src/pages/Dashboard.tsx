@@ -1,9 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import DashboardIssues from '../components/DashboardIssues';
 import DashboardLastIssues from '../components/DashboardLastIssues';
 import useIssueQuery from '../hooks/useIssueQuery';
+import useSign from '../hooks/useSign';
+import { useEffect } from 'react';
 
 export default function Dashboard() {
+  const { token } = useSign();
   const { issues, loading: loadingQuery } = useIssueQuery();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) navigate('/', { replace: true });
+  }, [navigate, token]);
 
   return (
     <div className="w-full h-full p-12">
